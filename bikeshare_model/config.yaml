@@ -1,0 +1,140 @@
+# Data Files
+training_data_file: bike-sharing-dataset.csv
+
+# target Variable
+target: cnt
+
+pipeline_name: bikeshare_model
+pipeline_save_file: bikeshare_model_output_v
+
+features_final:      # features to be used
+  - season
+  - yr
+  - mnth
+  - hr
+  - holiday
+  - workingday
+  - weathersit
+  - temp
+  - atemp
+  - hum
+  - windspeed
+  - weekday_Sun
+  - weekday_Mon
+  - weekday_Tue
+  - weekday_Wed
+  - weekday_Thu
+  - weekday_Fri
+  - weekday_Sat
+
+features:
+  - dteday
+  - yr
+  - mnth
+  - season
+  - hr
+  - holiday
+  - weekday
+  - workingday
+  - weathersit
+  - temp
+  - atemp
+  - hum
+  - windspeed
+  - casual
+  - registered
+
+unused_fields:  # Features to drop 
+  - dteday
+  - weekday
+  - casual
+  - registered
+
+# Features inside processing pipeline
+
+weather_var: weathersit  # first imputation, then --> Mapping
+temperature_var: temp
+humidity_var: hum
+windspeed_var: windspeed
+year_var: yr
+month_var: mnth
+hour_var: hr
+season_var: season
+holiday_var: holiday
+workday_var: workingday
+atemp_var: atemp
+
+
+holiday_mapping:
+  Yes: 0
+  No: 1
+
+workingday_mapping:
+  No: 0
+  Yes: 1
+
+hour_mapping:
+  '4am': 0
+  '3am': 1
+  '5am': 2
+  '2am': 3
+  '1am': 4
+  '12am': 5
+  '6am': 6
+  '11pm': 7
+  '10pm': 8
+  '10am': 9
+  '9pm': 10
+  '11am': 11
+  '7am': 12
+  '9am': 13
+  '8pm': 14
+  '2pm': 15
+  '1pm': 16
+  '12pm': 17
+  '3pm': 18
+  '4pm': 19
+  '7pm': 20
+  '8am': 21
+  '6pm': 22
+  '5pm': 23
+
+weather_mappings:
+  Heavy Rain: 0
+  Light Rain: 1
+  Mist: 2
+  Clear: 3
+
+season_mappings:
+  spring: 0
+  winter: 1
+  summer: 2
+  fall: 3
+
+year_mapping:
+  2011: 0
+  2012: 1
+
+month_mapping:
+  January: 0
+  February: 1
+  December: 2
+  March: 3
+  November: 4
+  April: 5
+  October: 6
+  May: 7
+  September: 8
+  June: 9
+  July: 10
+  August: 11
+
+# set train/test split
+test_size: 0.20
+
+# to set the random seed
+random_state: 42
+
+# algorithm parameters
+n_estimators: 100
+max_depth: 10
